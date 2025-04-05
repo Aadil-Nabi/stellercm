@@ -21,7 +21,7 @@ const cm_password = process.env.CM_PASSWORD;
 const baseUrl = process.env.BASE_URL;
 const version = process.env.VERSION;
 
-// Create an axios instance.
+// Create an axios instance, rejectUnauthorized will reject the SSL certificate and work on TCP
 const axiosInstance = axios.create({
   httpsAgent: new https.Agent({
     rejectUnauthorized: false,
@@ -38,7 +38,6 @@ export async function getTokenFromCipherTrust(): Promise<CipherTrustToken> {
       username: cm_user,
       password: cm_password,
     });
-    // console.log(response);
   } catch (error) {
     throw new Error('Unable to get Token from the thales ciphertrust manager');
   }
