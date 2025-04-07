@@ -3,7 +3,6 @@ import NavigationPage from '@/components/ui/navigation_bar';
 export default function Example() {
   return (
     <>
-      <NavigationPage />
       <div className="overflow-hidden bg-white py-24 sm:py-32">
         <div className="mx-auto max-w-2xl px-6 lg:max-w-7xl lg:px-8">
           <div className="max-w-4xl">
@@ -11,7 +10,7 @@ export default function Example() {
               About us
             </p>
             <h1 className="mt-2 text-4xl font-semibold tracking-tight text-pretty text-gray-900 sm:text-5xl">
-              On a mission to make the world a better place
+              On a mission to make the world a better place,
             </h1>
             <p className="mt-6 text-xl/8 text-balance text-gray-700">
               At our core, we believe that security and trust are the
