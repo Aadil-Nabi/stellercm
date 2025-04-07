@@ -15,15 +15,15 @@ const faqs = [
     question: "What are the key features of CipherTrust Manager?",
     answer: `Key features include:
 
-Centralized encryption key management (KMIP, REST, PKCS#11)
+Centralized encryption key management (KMIP, REST, PKCS#11),
 
-Data discovery and classification
+Data discovery and classification,
 
-Policy-based access controls
+Policy-based access controls,
 
-Integration with cloud-native services
+Integration with cloud-native services,
 
-Tamper-proof logging and reporting
+Tamper-proof logging and reporting,
 
 FIPS 140-2 Level 3 certified HSM support`,
   },
