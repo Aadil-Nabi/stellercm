@@ -1,6 +1,5 @@
 import axios from 'axios'; // external library used to perform HTTP requests (POST, GET, PUT, DELETE) on server.
 import https from 'https';
-import dotenv from 'dotenv';
 
 // interface to define the type of the response received from the ciphertrust manager
 interface CipherTrustToken {
@@ -14,15 +13,6 @@ interface CipherTrustToken {
   };
 }
 
-// Load env variables using dotenv library
-dotenv.config();
-// const cm_user = process.env.CM_USERNAME;
-// const cm_password = process.env.CM_PASSWORD;
-// const baseUrl = process.env.BASE_URL;
-// const version = process.env.VERSION;
-
-// const baseUrl = process.env.BASE_URL;
-
 // Create an axios instance, rejectUnauthorized will reject the SSL certificate and work on TCP
 const axiosInstance = axios.create({
   httpsAgent: new https.Agent({
@@ -31,19 +21,22 @@ const axiosInstance = axios.create({
 });
 
 // getTokenFromCipherTrust to get the JWT from the CipherTrust Manager.
-export async function getTokenFromCipherTrust(baseUrl: string, cm_user: string, cm_password: string ): Promise<CipherTrustToken> {
-  let response: CipherTrustToken;
+export async function getTokenFromCipherTrust(cmUrl: string, cm_user: string, cm_password: string ) {
+  // let response: CipherTrustToken;
 
   try {
-    response = await axiosInstance.post(`${baseUrl}/api/v1/auth/tokens`, {
-      grant_type: 'password',
-      username: cm_user,
-      password: cm_password,
+    const response = await axiosInstance.post("api/cmtoken", {
+        grant_type: "password",
+        cmUrl: cmUrl,
+        username: cm_user,
+        password: cm_password,
+
     });
+    console.log("Response from the token.ts.................",response);
+
   } catch (error) {
     console.log(error);
-    throw new Error('Unable to get Token from the thales ciphertrust manager');
+    // throw new Error('Unable to get Token from the thales ciphertrust manager');
   }
 
-  return response;
 }
