@@ -1,6 +1,5 @@
 import {NextRequest, NextResponse} from "next/server";
-import axios from "axios";
-import https from "https";
+import {getAxiosInstance} from "@/lib/utility";
 
 interface CipherTrustToken {
     data: {
@@ -13,12 +12,8 @@ interface CipherTrustToken {
     };
 }
 
-// Create an axios instance, rejectUnauthorized will reject the SSL certificate and work on TCP
-const axiosInstance = axios.create({
-    httpsAgent: new https.Agent({
-        rejectUnauthorized: false,
-    }),
-});
+// get axios instance
+const axiosInstance = getAxiosInstance()
 
 export  async function POST(request: NextRequest){
     const body = await request.json();
