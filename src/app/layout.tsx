@@ -20,10 +20,7 @@ export default function RootLayout({
     <html lang="en">
     <body>
     <NavigationPage/>
-    <nav>
-      <Link href="/login">Open modal</Link>
-    </nav>
-    <div>{auth}</div>
+    {auth}
     {children}
     <FooterPage/>
     </body>
